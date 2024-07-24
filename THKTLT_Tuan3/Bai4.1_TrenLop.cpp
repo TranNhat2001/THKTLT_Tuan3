@@ -18,6 +18,17 @@ void generateRandomMatrix(int **a, int m, int n) {
 	}
 }
 
+// Hàm tính và xuất tổng giá trị từng dòng
+void sumRows(int **a, int m, int n) {
+	for (int i = 0; i < m; ++i) {
+		int sum = 0;
+		for (int j = 0; j < n; ++j) {
+			sum += a[i][j];
+		}
+		printf("Tong gia tri cua dong %d: %d\n", i, sum);
+	}
+}
+
 // Hàm main 
 int main() {
 	int m, n;
@@ -36,6 +47,9 @@ int main() {
 	printf("4.1.1.Ma tran ngau nhien a:\n");
 	generateRandomMatrix(a, m, n);
 	printf("\n");
+	// Gọi các hàm khác
+	printf("\n4.1.2.\n");
+	sumRows(a, m, n);
 
 	_getch();
 
