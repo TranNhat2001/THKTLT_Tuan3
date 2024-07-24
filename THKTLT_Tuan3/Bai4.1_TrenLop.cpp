@@ -98,6 +98,29 @@ void evenRows(int **a, int m, int n) {
 		}
 	}
 }
+// Hàm sắp xếp mảng a tăng theo từng dòng
+void sortRows(int **a, int m, int n) {
+	for (int i = 0; i < m; ++i) {
+		// thuật toán sắp xếp nổi bọt đơn giản
+		for (int j = 0; j < n - 1; ++j) {
+			for (int k = 0; k < n - j - 1; ++k) {
+				if (a[i][k] > a[i][k + 1]) {
+					int temp = a[i][k];
+					a[i][k] = a[i][k + 1];
+					a[i][k + 1] = temp;
+				}
+			}
+		}
+	}
+
+	printf("Ma tran a sau khi sap xep tang theo tung dong:\n");
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < n; ++j) {
+			printf("%d\t", a[i][j]);
+		}
+		printf("\n");
+	}
+}
 
 // Hàm main 
 int main() {
@@ -120,14 +143,21 @@ int main() {
 	// Gọi các hàm khác
 	printf("\n4.1.2.\n");
 	sumRows(a, m, n);
+
 	printf("\n4.1.3.\n");
 	maxInColumns(a, m, n);
+
 	printf("\n4.1.4.");
 	boundaryElements(a, m, n);
+
 	printf("\n4.1.5.\n");
 	localMaxima(a, m, n);
+
 	printf("\n4.1.8.\n");
 	evenRows(a, m, n);
+
+	printf("\n4.1.9.\n");
+	sortRows(a, m, n);
 
 	_getch();
 
