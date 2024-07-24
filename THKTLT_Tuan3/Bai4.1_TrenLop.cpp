@@ -28,6 +28,18 @@ void sumRows(int **a, int m, int n) {
 		printf("Tong gia tri cua dong %d: %d\n", i, sum);
 	}
 }
+// Hàm xuất phần tử lớn nhất trên từng cột
+void maxInColumns(int **a, int m, int n) {
+	for (int j = 0; j < n; ++j) {
+		int max_value = a[0][j];
+		for (int i = 1; i < m; ++i) {
+			if (a[i][j] > max_value) {
+				max_value = a[i][j];
+			}
+		}
+		printf("Phan tu lon nhat tren cot %d: %d\n", j, max_value);
+	}
+}
 
 // Hàm main 
 int main() {
@@ -50,6 +62,8 @@ int main() {
 	// Gọi các hàm khác
 	printf("\n4.1.2.\n");
 	sumRows(a, m, n);
+	printf("\n4.1.3.\n");
+	maxInColumns(a, m, n);
 
 	_getch();
 
