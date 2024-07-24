@@ -40,6 +40,32 @@ void maxInColumns(int **a, int m, int n) {
 		printf("Phan tu lon nhat tren cot %d: %d\n", j, max_value);
 	}
 }
+// Hàm xuất các phần tử thuộc các đường biên trên, dưới, trái và phải
+void boundaryElements(int **a, int m, int n) {
+	printf("\nDuong bien tren: ");
+	for (int j = 0; j < n; ++j) {
+		printf("%d ", a[0][j]);
+	}
+	printf("\n");
+
+	printf("Duong bien duoi: ");
+	for (int j = 0; j < n; ++j) {
+		printf("%d ", a[m - 1][j]);
+	}
+	printf("\n");
+
+	printf("Duong bien trai: ");
+	for (int i = 0; i < m; ++i) {
+		printf("%d ", a[i][0]);
+	}
+	printf("\n");
+
+	printf("Duong bien phai: ");
+	for (int i = 0; i < m; ++i) {
+		printf("%d ", a[i][n - 1]);
+	}
+	printf("\n");
+}
 
 // Hàm main 
 int main() {
@@ -64,6 +90,8 @@ int main() {
 	sumRows(a, m, n);
 	printf("\n4.1.3.\n");
 	maxInColumns(a, m, n);
+	printf("\n4.1.4.");
+	boundaryElements(a, m, n);
 
 	_getch();
 
