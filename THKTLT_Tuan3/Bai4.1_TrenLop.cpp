@@ -66,6 +66,19 @@ void boundaryElements(int **a, int m, int n) {
 	}
 	printf("\n");
 }
+// Hàm xuất các phần tử cực đại
+void localMaxima(int **a, int m, int n) {
+	printf("Cac phan tu cuc dai:\n");
+	for (int i = 1; i < m - 1; ++i) {
+		for (int j = 1; j < n - 1; ++j) {
+			if (a[i][j] > a[i - 1][j] && a[i][j] > a[i + 1][j] &&
+				a[i][j] > a[i][j - 1] && a[i][j] > a[i][j + 1]) {
+				printf("%d ", a[i][j]);
+			}
+		}
+	}
+	printf("\n");
+}
 
 // Hàm main 
 int main() {
@@ -92,6 +105,8 @@ int main() {
 	maxInColumns(a, m, n);
 	printf("\n4.1.4.");
 	boundaryElements(a, m, n);
+	printf("\n4.1.5.\n");
+	localMaxima(a, m, n);
 
 	_getch();
 
