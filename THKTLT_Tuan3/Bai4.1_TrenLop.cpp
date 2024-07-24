@@ -83,19 +83,18 @@ void localMaxima(int **a, int m, int n) {
 	printf("\n");
 }
 
-
 // Hàm xuất dòng chỉ chứa số chẵn
 void evenRows(int **a, int m, int n) {
 	printf("Cac dong chi chua so chan:\n");
 	for (int i = 0; i < m; ++i) {
 		int has_even = 0;
 		for (int j = 0; j < n; ++j) {
-			if (a[i][j] % 2 == 0) {
+			if (a[i][j] % 2 != 0) {
 				has_even = 1;
 				break;
 			}
 		}
-		if (has_even) {
+		if (has_even == 0) {
 			for (int j = 0; j < n; ++j) {
 				printf("%d ", a[i][j]);
 			}
