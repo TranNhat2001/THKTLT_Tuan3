@@ -60,6 +60,46 @@ int tim_max_tam_giac_tren(int n, int** a) {
     return max;
 }
 
+//Sắp xếp ma trận tăng dần theo kiểu zic-zắc (tăng từ trái qua phải và từ trên xuống dưới).
+void sap_xep_zic_zac(int n, int** a) {
+    int* temp = (int*)malloc(n * n * sizeof(int));
+    int k = 0;
+
+    // Lưu các phần tử vào mảng một chiều
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            temp[k++] = a[i][j];
+        }
+    }
+
+    // Sắp xếp mảng một chiều bằng thuật toán sắp xếp nổi bọt
+    for (int i = 0; i < n * n - 1; ++i) {
+        for (int j = i + 1; j < n * n; ++j) {
+            if (temp[i] > temp[j]) {
+                int t = temp[i];
+                temp[i] = temp[j];
+                temp[j] = t;
+            }
+        }
+    }
+
+    // Ghi lại vào ma trận theo kiểu zic-zắc
+    k = 0;
+    for (int i = 0; i < n; ++i) {
+        if (i % 2 == 0) {
+            for (int j = 0; j < n; ++j) {
+                a[i][j] = temp[k++];
+            }
+        }
+        else {
+            for (int j = n - 1; j >= 0; --j) {
+                a[i][j] = temp[k++];
+            }
+        }
+    }
+    
+}
+
 int main() {
     int n = 5;  // Kích thước của ma trận
 
@@ -76,5 +116,8 @@ int main() {
     xuat_duong_cheo_song_song(n, ma_tran);
     int max = tim_max_tam_giac_tren(n, ma_tran);
     printf("Phan tu max trong tam giac tren duong cheo chinh: %d\n", max);
+    sap_xep_zic_zac(n, ma_tran);
+    printf("Ma tran sau khi sap xep zic-zac:\n");
+    xuat_ma_tran(n, ma_tran);
     return 0;
 }
