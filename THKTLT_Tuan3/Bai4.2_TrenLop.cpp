@@ -47,6 +47,19 @@ void xuat_duong_cheo_song_song(int n, int** a) {
     }
 }
 
+//Tìm phần tử max thuộc tam giác trên của đường chéo chính.
+int tim_max_tam_giac_tren(int n, int** a) {
+    int max = a[0][0];
+    for (int i = 0; i < n; ++i) {
+        for (int j = i; j < n; ++j) {
+            if (a[i][j] > max) {
+                max = a[i][j];
+            }
+        }
+    }
+    return max;
+}
+
 int main() {
     int n = 5;  // Kích thước của ma trận
 
@@ -61,5 +74,7 @@ int main() {
     xuat_ma_tran(n, ma_tran);
     xuat_duong_cheo_chinh(n, ma_tran);
     xuat_duong_cheo_song_song(n, ma_tran);
+    int max = tim_max_tam_giac_tren(n, ma_tran);
+    printf("Phan tu max trong tam giac tren duong cheo chinh: %d\n", max);
     return 0;
 }
