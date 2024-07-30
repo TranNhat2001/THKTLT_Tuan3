@@ -32,6 +32,21 @@ void xuat_duong_cheo_chinh(int n, int** a) {
     printf("\n");
 }
 
+//Xuất các phần tử thuộc đường chéo song song với đường chéo chính.
+void xuat_duong_cheo_song_song(int n, int** a) {
+    printf("Duong cheo song song:\n");
+    for (int k = 1 - n; k < n; ++k) {
+        printf("Duong cheo %d:\n", k);
+        for (int i = 0; i < n; ++i) {
+            int j = i + k;
+            if (j >= 0 && j < n) {
+                printf("%4d ", a[i][j]);
+            }
+        }
+        printf("\n");
+    }
+}
+
 int main() {
     int n = 5;  // Kích thước của ma trận
 
@@ -45,5 +60,6 @@ int main() {
     printf("Ma tran:\n");
     xuat_ma_tran(n, ma_tran);
     xuat_duong_cheo_chinh(n, ma_tran);
+    xuat_duong_cheo_song_song(n, ma_tran);
     return 0;
 }
