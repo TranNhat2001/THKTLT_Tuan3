@@ -100,6 +100,40 @@ void sap_xep_zic_zac(int n, int** a) {
     
 }
 
+// Hàm sắp xếp đường chéo chính
+void sap_xep_duong_cheo_chinh(int n, int** a) {
+    // Cấp phát bộ nhớ cho mảng duong_cheo
+    int* duong_cheo = (int*)malloc(n * sizeof(int));
+    if (duong_cheo == NULL) {
+        printf("Lỗi cấp phát bộ nhớ.\n");
+        return;
+    }
+
+    // Lưu các phần tử của đường chéo chính vào mảng
+    for (int i = 0; i < n; ++i) {
+        duong_cheo[i] = a[i][i];
+    }
+
+    // Sắp xếp mảng
+    for (int i = 0; i < n - 1; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            if (duong_cheo[i] > duong_cheo[j]) {
+                int t = duong_cheo[i];
+                duong_cheo[i] = duong_cheo[j];
+                duong_cheo[j] = t;
+            }
+        }
+    }
+
+    // Ghi lại vào ma trận
+    for (int i = 0; i < n; ++i) {
+        a[i][i] = duong_cheo[i];
+    }
+
+    // Giải phóng bộ nhớ
+    free(duong_cheo);
+}
+
 int main() {
     int n = 5;  // Kích thước của ma trận
 
@@ -118,6 +152,9 @@ int main() {
     printf("Phan tu max trong tam giac tren duong cheo chinh: %d\n", max);
     sap_xep_zic_zac(n, ma_tran);
     printf("Ma tran sau khi sap xep zic-zac:\n");
+    xuat_ma_tran(n, ma_tran);
+    sap_xep_duong_cheo_chinh(n, ma_tran);
+    printf("Ma tran sau khi sap xep duong cheo chinh:\n");
     xuat_ma_tran(n, ma_tran);
     return 0;
 }
