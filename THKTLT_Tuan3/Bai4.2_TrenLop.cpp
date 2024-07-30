@@ -23,6 +23,15 @@ void xuat_ma_tran(int n, int** a) {
     }
 }
 
+//Xuất các phần tử trên đường chéo chính.
+void xuat_duong_cheo_chinh(int n, int** a) {
+    printf("Duong cheo chinh:\n");
+    for (int i = 0; i < n; ++i) {
+        printf("%4d ", a[i][i]);
+    }
+    printf("\n");
+}
+
 int main() {
     int n = 5;  // Kích thước của ma trận
 
@@ -35,5 +44,6 @@ int main() {
     tao_ma_tran(n, ma_tran);
     printf("Ma tran:\n");
     xuat_ma_tran(n, ma_tran);
+    xuat_duong_cheo_chinh(n, ma_tran);
     return 0;
 }
